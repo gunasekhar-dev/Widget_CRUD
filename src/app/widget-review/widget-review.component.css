@@ -1,0 +1,22 @@
+.my-class{
+
+  display: block;
+    float: right;
+    margin: 10px;
+    text-decoration: none;
+    color: white;
+    font-family: Arial;
+
+}
+
+.heading{
+  display: flex;
+}
+
+.Header{
+  min-width: 1000px;
+}
+
+.count{
+  margin: 20px 0px 0px 90px;
+}

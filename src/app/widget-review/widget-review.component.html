@@ -1,0 +1,35 @@
+<div class="container">
+  <br />
+  <div class="heading">
+  <h1 class="Header">List of Widgets</h1>
+  <p class="count">Total number of API count: {{ apiCount }}</p>
+</div>
+  <br />
+  <div class="my-class">
+    <a [routerLink]="['/api/widgets/add']">Add New Widget</a>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let post of widget">
+        <td>{{ post.name }}</td>
+        <br />
+        <td>{{ post.description }}</td>
+        <td>
+          <a [routerLink]="['/api/widgets', post.id]">View</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button
+    class="btn btn-primary"
+    (click)="getComponents()"
+    [routerLink]="['/api/components/view']"
+  >
+    Get All Components
+  </button>
+</div>
