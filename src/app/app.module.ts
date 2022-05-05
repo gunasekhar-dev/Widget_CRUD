@@ -5,7 +5,7 @@ import {HttpClientModule} from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WidgetReviewComponent } from './widget-review/widget-review.component';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { WidgetViewComponent } from './widget-view/widget-view.component';
 import { AddWidgetComponent } from './add-widget/add-widget/add-widget.component';
 import { ComponentWidgetComponent } from './component-widget/component-widget/component-widget.component';

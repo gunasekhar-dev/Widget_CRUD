@@ -1,22 +1,20 @@
-.my-class{
-
+.my-class {
   display: block;
-    float: right;
-    margin: 10px;
-    text-decoration: none;
-    color: white;
-    font-family: Arial;
-
+  float: right;
+  margin: 10px;
+  text-decoration: none;
+  color: white;
+  font-family: Arial;
 }
 
-.heading{
+.heading {
   display: flex;
 }
 
-.Header{
+.Header {
   min-width: 1000px;
 }
 
-.count{
+.count {
   margin: 20px 0px 0px 90px;
 }

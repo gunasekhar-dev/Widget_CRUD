@@ -9,35 +9,37 @@ import { WidgetViewComponent } from './widget-view/widget-view.component';
 
 const routes: Routes = [
   {
-    path: '', component: WidgetReviewComponent
+    path: '',
+    component: WidgetReviewComponent,
   },
   {
-    path: 'api/widgets', component: WidgetReviewComponent
+    path: 'api/widgets',
+    component: WidgetReviewComponent,
   },
   {
-
-    path: 'api/widgets/add', component: AddWidgetComponent
+    path: 'api/widgets/add',
+    component: AddWidgetComponent,
   },
   {
-
-    path: 'api/components', component: ComponentViewComponent
+    path: 'api/components',
+    component: ComponentViewComponent,
   },
   {
-    path: 'api/components/view', component: ComponentIdComponent
+    path: 'api/components/view',
+    component: ComponentIdComponent,
   },
   {
-    path: 'api/widgets/:id', component: WidgetViewComponent
+    path: 'api/widgets/:id',
+    component: WidgetViewComponent,
   },
   {
-    path: '**', component: ErrorHandleComponent
+    path: '**',
+    component: ErrorHandleComponent,
   },
-
-
-
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -5,30 +5,21 @@ import { WidgetService } from 'src/app/services/widget.service';
 @Component({
   selector: 'app-component-widget',
   templateUrl: './component-widget.component.html',
-  styleUrls: ['./component-widget.component.css']
+  styleUrls: ['./component-widget.component.css'],
 })
 export class ComponentWidgetComponent implements OnInit {
-
-
   @Output() newItemEvent = new EventEmitter<string>();
 
-  constructor(private widgetService: WidgetService) { }
+  constructor(private widgetService: WidgetService) {}
   newComponent: NewComponent = {
-    name        :  '',
-  description  : '',
-  optional    :  true
-  }
+    name: '',
+    description: '',
+    optional: true,
+  };
 
-  ngOnInit(): void {
-  }
-
-
+  ngOnInit(): void {}
 
   addNewItem(value: any) {
     this.newItemEvent.emit(value);
   }
-
-
 }
-
-
