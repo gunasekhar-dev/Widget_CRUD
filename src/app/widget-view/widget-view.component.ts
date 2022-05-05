@@ -7,68 +7,54 @@ import { WidgetService } from '../services/widget.service';
 @Component({
   selector: 'app-widget-view',
   templateUrl: './widget-view.component.html',
-  styleUrls: ['./widget-view.component.css']
+  styleUrls: ['./widget-view.component.css'],
 })
 export class WidgetViewComponent implements OnInit {
-
-  constructor(private route: ActivatedRoute, private widgetService: WidgetService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private widgetService: WidgetService
+  ) {}
   @Output() newEvent = new EventEmitter<string>();
-  widget : Widget | undefined;
-  apiCount : number =0;
+  widget: Widget | undefined;
+  apiCount: number = 0;
 
   ngOnInit(): void {
-    this.widgetService.apiCount.subscribe(result =>
-      {
-       this.apiCount=result;
+    this.widgetService.apiCount.subscribe((result) => {
+      this.apiCount = result;
+    });
+
+    this.route.paramMap.subscribe((params) => {
+      const id = params.get('id');
+
+      if (id) {
+        this.widgetService.getWidgetById(id).subscribe((res) => {
+          this.widget = res;
+          console.log(res);
+          this.widgetService.apiCount.next(this.apiCount + 1);
+        });
       }
-      );
-
-    this.route.paramMap.subscribe(params =>
-      {
-        const id =params.get('id');
-
-        if(id){
-          this.widgetService.getWidgetById(id).subscribe(res =>
-            {
-              this.widget= res;
-              console.log(res);
-              this.widgetService.apiCount.next(this.apiCount+1);
-            });
-
-        }
-      });
-
-
+    });
   }
 
-  onSubmit(): void{
+  onSubmit(): void {
     const updateWidget: UpdateWidget = {
       name: this.widget?.name,
       description: this.widget?.description,
-     components: this.widget?.components,
-      count:  this.widget?.count
-    }
+      components: this.widget?.components,
+      count: this.widget?.count,
+    };
 
-
-   this.widgetService.updateWidget(this.widget?.id , updateWidget).subscribe(
-     res =>{
-       alert('success');
-       this.widgetService.apiCount.next(this.apiCount+1);
-     }
-
-   );
-
-
+    this.widgetService
+      .updateWidget(this.widget?.id, updateWidget)
+      .subscribe((res) => {
+        alert('success');
+        this.widgetService.apiCount.next(this.apiCount + 1);
+      });
   }
 
-
-  deletePost()
-  {
-    this.widgetService.deleteWidget(this.widget?.id).subscribe(res=>
-      {
-        alert('deleted successfully');
-
-      })
+  deletePost() {
+    this.widgetService.deleteWidget(this.widget?.id).subscribe((res) => {
+      alert('deleted successfully');
+    });
   }
-
 }
