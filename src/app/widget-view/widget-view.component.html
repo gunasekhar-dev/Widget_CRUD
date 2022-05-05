@@ -5,35 +5,18 @@
   <form #form="ngForm" (ngSubmit)="onSubmit()">
     <div class="mb-3">
       <label class="form-label">Id</label>
-      <input
-        type="text"
-        class="form-control"
-        name="id"
-        [(ngModel)]="widget.id"
-        readonly
-      />
+      <input type="text" class="form-control" name="id" [(ngModel)]="widget.id" readonly />
     </div>
     <div class="mb-3">
       <label class="form-label">Name</label>
-      <input
-        type="text"
-        class="form-control"
-        name="name"
-        [(ngModel)]="widget.name"
-      />
+      <input type="text" class="form-control" name="name" [(ngModel)]="widget.name" />
     </div>
     <div class="mb-3">
       <label class="form-label">Description</label>
-      <textarea
-        class="form-control"
-        name="description"
-        [(ngModel)]="widget.description"
-      ></textarea>
+      <textarea class="form-control" name="description" [(ngModel)]="widget.description"></textarea>
     </div>
     <div class="mb-4">
-      <app-component-view
-        [widgetComponents]="widget.components"
-      ></app-component-view>
+      <app-component-view [widgetComponents]="widget.components"></app-component-view>
     </div>
     <div class="mb-3">
       <label class="form-label">Count</label>
@@ -42,11 +25,7 @@
 
     <div class="mb-3">
       <button class="btn btn-primary">Save</button>
-      <button
-        class="btn btn-danger"
-        style="margin-left: 20px"
-        (click)="deletePost()"
-      >
+      <button class="btn btn-danger" style="margin-left: 20px" (click)="deletePost()">
         Delete
       </button>
     </div>
