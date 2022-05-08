@@ -12,17 +12,15 @@ export class ComponentViewComponent implements OnInit {
 
   constructor(private widgetService: WidgetService) {}
 
-  ComponentWidget: ComponentWidget[] = [];
+  // ComponentWidget: ComponentWidget[] = [];
 
-  apiCount: number = 0;
+
 
   ngOnInit(): void {
-    this.widgetService.apiCount.subscribe((result) => {
-      this.apiCount = result;
-    });
-    this.widgetService.getComponent().subscribe((res) => {
-      this.ComponentWidget = res;
-      this.widgetService.apiCount.next(this.apiCount + 1);
-    });
+
+    // this.widgetService.getComponent().subscribe((res) => {
+    //   this.ComponentWidget = res;
+
+    // });
   }
 }

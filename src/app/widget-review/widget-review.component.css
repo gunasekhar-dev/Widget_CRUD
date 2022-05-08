@@ -6,6 +6,10 @@
   color: white;
   font-family: Arial;
 }
+.Header{
+  float: right;
+  text-align: center;
+}
 
 .heading {
   display: flex;
@@ -16,5 +20,5 @@
 }
 
 .count {
-  margin: 20px 0px 0px 90px;
+  margin: 20px 0px 0px 70px;
 }

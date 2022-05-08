@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UpdateWidget } from '../Models/updateWidget.model';
 import { Widget } from '../Models/widget.model';
 import { WidgetService } from '../services/widget.service';
@@ -12,17 +12,14 @@ import { WidgetService } from '../services/widget.service';
 export class WidgetViewComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private widgetService: WidgetService
   ) {}
   @Output() newEvent = new EventEmitter<string>();
   widget: Widget | undefined;
-  apiCount: number = 0;
+
 
   ngOnInit(): void {
-    this.widgetService.apiCount.subscribe((result) => {
-      this.apiCount = result;
-    });
-
     this.route.paramMap.subscribe((params) => {
       const id = params.get('id');
 
@@ -30,7 +27,7 @@ export class WidgetViewComponent implements OnInit {
         this.widgetService.getWidgetById(id).subscribe((res) => {
           this.widget = res;
           console.log(res);
-          this.widgetService.apiCount.next(this.apiCount + 1);
+
         });
       }
     });
@@ -48,13 +45,14 @@ export class WidgetViewComponent implements OnInit {
       .updateWidget(this.widget?.id, updateWidget)
       .subscribe((res) => {
         alert('success');
-        this.widgetService.apiCount.next(this.apiCount + 1);
+
       });
   }
 
   deletePost() {
     this.widgetService.deleteWidget(this.widget?.id).subscribe((res) => {
       alert('deleted successfully');
+      this.router.navigateByUrl("/api/widgets");
     });
   }
 }

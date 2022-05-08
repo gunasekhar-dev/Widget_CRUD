@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UpdateWidget } from 'src/app/Models/updateWidget.model';
 import { WidgetService } from 'src/app/services/widget.service';
 
@@ -9,7 +10,7 @@ import { WidgetService } from 'src/app/services/widget.service';
 })
 export class AddWidgetComponent implements OnInit {
 
-  constructor(private widgetService: WidgetService) { }
+  constructor(private widgetService: WidgetService,private router: Router,) { }
 
   ngOnInit(): void {
   }
@@ -32,6 +33,7 @@ export class AddWidgetComponent implements OnInit {
     this.widgetService.addPost(this.addwidget).subscribe(res =>
      {
        console.log(res);
+       this.router.navigateByUrl("/api/widgets");
      })
    }
 
