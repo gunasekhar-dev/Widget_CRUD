@@ -1,18 +1,19 @@
-<div class="container">
+<div class="container font-italic">
   <br />
   <div class="heading">
     <h1 class="Header">List of Widgets</h1>
     <p class="count">Total number of API count: {{ apiCount }}</p>
   </div>
   <br />
-  <div class="my-class">
-    <a [routerLink]="['/api/widgets/add']">Add New Widget</a
-    >​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+  <div class="my-class font-italic">
+    <!-- <a [routerLink]="['/api/widgets/add']">Add New Widget</a> -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="button"
+    autocomplete="off" [routerLink]="['/api/widgets/add']">Add New Widget</button>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
   </div>
-  <table class="table">
+  <table class="table table-hover">
     <thead>
       <tr>
-        <th>Title</th>
+        <th class="font-italic">Widgets</th>
       </tr>
     </thead>
     <tbody>
@@ -26,11 +27,7 @@
       </tr>
     </tbody>
   </table>
-  <button
-    class="btn btn-primary"
-    (click)="getComponents()"
-    [routerLink]="['/api/components/view']"
-  >
+  <button class="btn btn-primary" (click)="getComponents()" [routerLink]="['/api/components/view']">
     Get All Components
   </button>
 </div>

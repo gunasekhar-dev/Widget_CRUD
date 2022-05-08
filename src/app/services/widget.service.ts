@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ComponentWidget } from '../Models/componentWidget.model';
 import { NewComponent } from '../Models/newComponent.model';
@@ -33,14 +33,9 @@ export class WidgetService {
     return this.http.get<Widget>(this.apiBaseUrl + '/api/widgets/' + id);
   }
 
-  updateWidget(
-    id: string | undefined,
-    updateWidget: UpdateWidget
-  ): Observable<Widget> {
+  updateWidget(id: string | undefined,updateWidget: UpdateWidget): Observable<Widget> {
     this.apiCount.next(this.apiCallCount + 1);
-    return this.http.put<Widget>(
-      this.apiBaseUrl + '/api/widgets/' + id,
-      updateWidget
+    return this.http.put<Widget>(this.apiBaseUrl + '/api/widgets/' + id,updateWidget
     );
   }
 
@@ -53,13 +48,13 @@ export class WidgetService {
     this.apiCount.next(this.apiCallCount + 1);
     return this.http.delete<Widget>(this.apiBaseUrl + '/api/widgets/' + id);
   }
-  createComponent(newComponent: NewComponent): Observable<ComponentWidget> {
-    this.apiCount.next(this.apiCallCount + 1);
-    return this.http.post<ComponentWidget>(
-      this.apiBaseUrl + '/api/components',
-      newComponent
-    );
-  }
+  // createComponent(newComponent: NewComponent): Observable<ComponentWidget> {
+  //   this.apiCount.next(this.apiCallCount + 1);
+  //   return this.http.post<ComponentWidget>(
+  //     this.apiBaseUrl + '/api/components',
+  //     newComponent
+  //   );
+  // }
 
   getComponent(): Observable<ComponentWidget[]> {
     this.apiCount.next(this.apiCallCount + 1);
@@ -68,17 +63,17 @@ export class WidgetService {
     );
   }
 
-  getComponentById(id: string): Observable<ComponentWidget> {
-    this.apiCount.next(this.apiCallCount + 1);
-    return this.http.get<ComponentWidget>(
-      this.apiBaseUrl + '/api/components/' + id
-    );
-  }
+  // getComponentById(id: string): Observable<ComponentWidget> {
+  //   this.apiCount.next(this.apiCallCount + 1);
+  //   return this.http.get<ComponentWidget>(
+  //     this.apiBaseUrl + '/api/components/' + id
+  //   );
+  // }
 
-  deleteComp(id: string | undefined): Observable<ComponentWidget> {
-    this.apiCount.next(this.apiCallCount + 1);
-    return this.http.delete<ComponentWidget>(
-      this.apiBaseUrl + '/api/components/' + id
-    );
-  }
+  // deleteComp(id: string | undefined): Observable<ComponentWidget> {
+  //   this.apiCount.next(this.apiCallCount + 1);
+  //   return this.http.delete<ComponentWidget>(
+  //     this.apiBaseUrl + '/api/components/' + id
+  //   );
+  // }
 }

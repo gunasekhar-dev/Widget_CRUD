@@ -4,4 +4,5 @@ export interface Widget {
   description: string;
   components: string[];
   count: number;
+
 }
