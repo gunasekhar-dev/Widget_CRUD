@@ -33,6 +33,10 @@ const routes: Routes = [
     component: WidgetViewComponent,
   },
   {
+    path: 'api/components/:id',
+    component: ComponentViewComponent,
+  },
+  {
     path: '**',
     component: ErrorHandleComponent,
   },

@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ComponentWidget } from 'src/app/Models/componentWidget.model';
 import { WidgetService } from 'src/app/services/widget.service';
 
@@ -10,17 +11,32 @@ import { WidgetService } from 'src/app/services/widget.service';
 export class ComponentViewComponent implements OnInit {
   @Input() widgetComponents: any;
 
+  @Output() updateWidget= new EventEmitter<{updatedComponents:ComponentWidget[] }>();
+
   constructor(private widgetService: WidgetService) {}
 
-  // ComponentWidget: ComponentWidget[] = [];
+  ComponentWidget: ComponentWidget[] = [];
 
-
+  newComponent: ComponentWidget = {
+    name: '',
+    description: '',
+    optional: true,
+    id: ''
+  };
 
   ngOnInit(): void {
 
-    // this.widgetService.getComponent().subscribe((res) => {
-    //   this.ComponentWidget = res;
+    this.ComponentWidget = this.widgetComponents.components;
+  }
 
-    // });
+  onAdd(){
+  // this.addNewWidget.emit('');
+  this.widgetComponents.push(this.newComponent);
+  }
+
+  onDeleteComp(comp: ComponentWidget){
+   this.widgetComponents= this.widgetComponents.filter((obj:ComponentWidget ) => obj.id != comp.id);
+   this.updateWidget.emit({updatedComponents: this.widgetComponents});
   }
 }
+
