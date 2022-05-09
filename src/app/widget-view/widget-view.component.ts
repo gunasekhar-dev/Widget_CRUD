@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ComponentWidget } from '../Models/componentWidget.model';
+import { NewComponent } from '../Models/newComponent.model';
 import { UpdateWidget } from '../Models/updateWidget.model';
 import { Widget } from '../Models/widget.model';
 import { WidgetService } from '../services/widget.service';
@@ -16,8 +18,15 @@ export class WidgetViewComponent implements OnInit {
     private widgetService: WidgetService
   ) {}
   @Output() newEvent = new EventEmitter<string>();
-  widget: Widget | undefined;
+  widget: Widget | undefined ;
+  public error: any;
 
+  newComponent: ComponentWidget = {
+    name: '',
+    description: '',
+    optional: true,
+    id: ''
+  };
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
@@ -37,22 +46,33 @@ export class WidgetViewComponent implements OnInit {
     const updateWidget: UpdateWidget = {
       name: this.widget?.name,
       description: this.widget?.description,
-      components: this.widget?.components,
+      components: this.widget?.components? this.widget.components : [],
       count: this.widget?.count,
     };
 
     this.widgetService
       .updateWidget(this.widget?.id, updateWidget)
-      .subscribe((res) => {
+      .subscribe((_res) => {
         alert('success');
 
-      });
+      }
+      );
   }
 
   deletePost() {
-    this.widgetService.deleteWidget(this.widget?.id).subscribe((res) => {
+    this.widgetService.deleteWidget(this.widget?.id).subscribe( next => {
       alert('deleted successfully');
+      console.log(next)
       this.router.navigateByUrl("/api/widgets");
+    },
+    error => { // second parameter is to listen for error
+      console.log(error);
+      this.error = error;
     });
+  }
+
+  OnUpdateWidget(event: any) {
+    if(this.widget)
+     this.widget.components = event.updatedComponents;
   }
 }

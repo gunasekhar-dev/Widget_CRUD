@@ -1,6 +1,7 @@
 <div class="container">
   <br />
   <h1>List of Components</h1>
+  <button (click)="onAdd()">Add comp</button>
   <br />
   <table class="table">
     <thead>
@@ -9,30 +10,25 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let newComp of widgetComponents">
+      <tr *ngFor="let newComp of widgetComponents; let i = index;">
         <td>
           <label class="form-label">Id</label>
-          <input
-            type="text"
-            class="form-control"
-            name="id"
-            [(ngModel)]="newComp.id"
-            readonly
-          />
+          <input type="text" class="form-control" name="id" [(ngModel)]="newComp.id" readonly />
         </td>
-        <td>{{ newComp.name }}</td>
-        <br />
-        <td>{{ newComp.description }}</td>
+        <td>
+          <input type="text" class="form-control" name="name" [(ngModel)]="newComp.name" />
+        </td>
         <br />
         <td>
-          <input
-            class="form-check-input"
-            type="checkbox"
-            name="optional"
-            [(ngModel)]="newComp.optional"
-          />
+          <input type="text" class="form-control" name="description" [(ngModel)]="newComp.description" />
+        </td>
+        <td>
+          <input class="form-check-input" type="checkbox" name="optional" [(ngModel)]="newComp.optional" />
+        </td>
+        <td><button class="btn btn-danger" style="margin-left: 20px" (click)="onDeleteComp(newComp)">Delete</button>
         </td>
       </tr>
+
       <td>
         <a [routerLink]="['/api/widgets']">Back</a>
       </td>
