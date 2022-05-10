@@ -12,14 +12,9 @@ export class ComponentIdComponent implements OnInit {
 
   ComponentWidget: ComponentWidget[] = [];
 
-
-
   ngOnInit(): void {
-
-
     this.widgetService.getComponent().subscribe((res) => {
       this.ComponentWidget = res;
-
     });
   }
 }

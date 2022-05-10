@@ -6,38 +6,29 @@ import { WidgetService } from 'src/app/services/widget.service';
 @Component({
   selector: 'app-add-widget',
   templateUrl: './add-widget.component.html',
-  styleUrls: ['./add-widget.component.css']
+  styleUrls: ['./add-widget.component.css'],
 })
 export class AddWidgetComponent implements OnInit {
+  constructor(private widgetService: WidgetService, private router: Router) {}
 
-  constructor(private widgetService: WidgetService,private router: Router,) { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   addwidget: UpdateWidget = {
     name: '',
     description: '',
-   components: [],
-    count: 10
-  }
+    components: [],
+    count: 10,
+  };
 
-
-
-   addItem(newItem: any) {
+  addItem(newItem: any) {
     this.addwidget.components?.push(newItem);
   }
 
-  onSubmit(): void{
+  onSubmit(): void {
     console.log(this.addwidget);
-    this.widgetService.addPost(this.addwidget).subscribe(res =>
-     {
-       console.log(res);
-       this.router.navigateByUrl("/api/widgets");
-     })
-   }
-
-
-
-
+    this.widgetService.addPost(this.addwidget).subscribe((res) => {
+      console.log(res);
+      this.router.navigateByUrl('/api/widgets');
+    });
+  }
 }

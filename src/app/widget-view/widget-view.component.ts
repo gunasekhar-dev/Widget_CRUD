@@ -54,6 +54,7 @@ export class WidgetViewComponent implements OnInit {
       .updateWidget(this.widget?.id, updateWidget)
       .subscribe((_res) => {
         alert('success');
+        this.router.navigateByUrl("/api/widgets");
 
       }
       );

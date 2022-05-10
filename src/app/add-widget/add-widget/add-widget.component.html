@@ -5,26 +5,15 @@
   <form #form="ngForm" (ngSubmit)="onSubmit()">
     <div class="mb-3">
       <label class="form-label">Name</label>
-      <input
-        type="text"
-        class="form-control"
-        name="name"
-        [(ngModel)]="addwidget.name"
-      />
+      <input type="text" class="form-control" name="name" [(ngModel)]="addwidget.name" />
     </div>
     <div class="mb-3">
       <label class="form-label">Description</label>
-      <textarea
-        class="form-control"
-        name="description"
-        [(ngModel)]="addwidget.description"
-      ></textarea>
+      <textarea class="form-control" name="description" [(ngModel)]="addwidget.description"></textarea>
     </div>
     <div class="mb-3">
       <label class="form-label">Component</label>
-      <app-component-widget
-        (newItemEvent)="addItem($event)"
-      ></app-component-widget>
+      <app-component-widget (newItemEvent)="addItem($event)"></app-component-widget>
     </div>
     <div class="mb-3">
       <label class="form-label">Count</label>
