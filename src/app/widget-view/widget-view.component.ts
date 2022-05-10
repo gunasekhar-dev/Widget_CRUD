@@ -1,7 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ComponentWidget } from '../Models/componentWidget.model';
-import { NewComponent } from '../Models/newComponent.model';
 import { UpdateWidget } from '../Models/updateWidget.model';
 import { Widget } from '../Models/widget.model';
 import { WidgetService } from '../services/widget.service';
@@ -17,7 +16,8 @@ export class WidgetViewComponent implements OnInit {
     private router: Router,
     private widgetService: WidgetService
   ) {}
-  @Output() newEvent = new EventEmitter<string>();
+
+
   widget: Widget | undefined ;
   public error: any;
 
@@ -65,10 +65,6 @@ export class WidgetViewComponent implements OnInit {
       alert('deleted successfully');
       console.log(next)
       this.router.navigateByUrl("/api/widgets");
-    },
-    error => { // second parameter is to listen for error
-      console.log(error);
-      this.error = error;
     });
   }
 

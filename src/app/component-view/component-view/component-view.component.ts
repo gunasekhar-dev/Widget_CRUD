@@ -44,9 +44,8 @@ export class ComponentViewComponent implements OnInit {
 }
 
 addCompToWidget(){
-   console.log(this.selectedComponent);
    if(this.selectedComponent && this.selectedComponent.optional != true)
-    this.selectedComponent.optional=false;
+   this.selectedComponent.optional=false;
    this.widgetComponents.push(this.selectedComponent);
    this.updateWidget.emit({updatedComponents: this.widgetComponents});
 }
