@@ -14,7 +14,7 @@ export class ComponentViewComponent implements OnInit {
   @Output() updateWidget= new EventEmitter<{updatedComponents:ComponentWidget[] }>();
 
   constructor(private widgetService: WidgetService) {}
-
+   selectedComponent : ComponentWidget | undefined;
   ComponentWidget: ComponentWidget[] = [];
 
   newComponent: ComponentWidget = {
@@ -25,8 +25,8 @@ export class ComponentViewComponent implements OnInit {
   };
 
   ngOnInit(): void {
-
-    this.ComponentWidget = this.widgetComponents.components;
+    this.getComponents();
+    // this.ComponentWidget = this.widgetComponents.components;
   }
 
   onAdd(){
@@ -38,5 +38,19 @@ export class ComponentViewComponent implements OnInit {
    this.widgetComponents= this.widgetComponents.filter((obj:ComponentWidget ) => obj.id != comp.id);
    this.updateWidget.emit({updatedComponents: this.widgetComponents});
   }
+
+  getComponents() {
+    this.widgetService.getComponent().subscribe((res) => {
+     this.ComponentWidget=res;
+    });
+}
+
+addCompToWidget(){
+   console.log(this.selectedComponent);
+   if(this.selectedComponent && this.selectedComponent.optional != true)
+    this.selectedComponent.optional=false;
+   this.widgetComponents.push(this.selectedComponent);
+   this.updateWidget.emit({updatedComponents: this.widgetComponents});
+}
 }
 
