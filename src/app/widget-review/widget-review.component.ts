@@ -28,8 +28,6 @@ export class WidgetReviewComponent implements OnInit {
   }
 
   getComponents() {
-    this.widgetService.getComponent().subscribe((res) => {
-      console.log(res);
-    });
+    this.widgetService.getComponent().subscribe();
   }
 }

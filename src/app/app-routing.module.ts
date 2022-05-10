@@ -40,6 +40,10 @@ const routes: Routes = [
     path: '**',
     component: ErrorHandleComponent,
   },
+  {
+    path: 'api/error',
+    component: ErrorHandleComponent,
+  },
 ];
 
 @NgModule({

@@ -26,11 +26,9 @@ export class ComponentViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.getComponents();
-    // this.ComponentWidget = this.widgetComponents.components;
   }
 
   onAdd(){
-  // this.addNewWidget.emit('');
   this.widgetComponents.push(this.newComponent);
   }
 

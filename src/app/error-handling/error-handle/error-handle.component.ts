@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WidgetService } from 'src/app/services/widget.service';
 
 @Component({
   selector: 'app-error-handle',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ErrorHandleComponent implements OnInit {
 
-  constructor() { }
+  constructor(private widgetService: WidgetService) { }
+  errorMessage: any;
+  errorStatusCode: any;
 
   ngOnInit(): void {
+
+  this.widgetService.errorMessage.subscribe(res => {
+
+    this.errorMessage= res.error.message;
+    this.errorStatusCode = res.status;
+  })
+
   }
+
+
 
 }
