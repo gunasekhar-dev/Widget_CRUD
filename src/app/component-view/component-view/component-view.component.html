@@ -5,9 +5,8 @@
   <select class="SelectComp" name="ChooseComponent" [(ngModel)]="selectedComponent">
     <option [ngValue]="null" disabled>Select Component</option>
     <option [ngValue]="comp" *ngFor="let comp of ComponentWidget">{{comp.name}}</option>
-    <!-- <option value="option-2">Option 2</option> -->
   </select>
-  <button class="btn btn-primary right" (click)="addCompToWidget()">Add To Widget</button>
+  <button type="button" class="btn btn-primary right" (click)="addCompToWidget()">Add To Widget</button>
   <br />
   <table class="table">
     <thead>

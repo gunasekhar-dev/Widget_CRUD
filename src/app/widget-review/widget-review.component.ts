@@ -12,7 +12,6 @@ export class WidgetReviewComponent implements OnInit {
   constructor(private widgetService: WidgetService) {}
 
   widget: Widget[] = [];
-  widgetChanged = new Subject<Widget[]>();
 
   apiCount: number = 0;
 
@@ -23,11 +22,7 @@ export class WidgetReviewComponent implements OnInit {
 
     this.widgetService.getAllWidgets().subscribe((res) => {
       this.widget = res;
-      this.widgetChanged.next(this.widget.slice());
     });
   }
 
-  getComponents() {
-    this.widgetService.getComponent().subscribe();
-  }
 }
