@@ -1,0 +1,18 @@
+.right{
+  display: block;
+  float: right;
+  margin: 10px;
+  text-decoration: none;
+  color: white;
+  font-family: Arial;
+}
+
+.SelectComp{
+  background-color: #212529;
+  color: white;
+  padding: 4px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+}

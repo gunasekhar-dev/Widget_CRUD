@@ -41,12 +41,12 @@ export class WidgetService {
     return this.http.put<Widget>(
       this.apiBaseUrl + '/api/widgets/' + id,
       updateWidget
-    ).pipe(catchError(alert('Something went wrong')));
+    );
   }
 
   addPost(addWidget: UpdateWidget): Observable<Widget> {
     this.apiCount.next(this.apiCallCount + 1);
-    return this.http.post<Widget>(this.apiBaseUrl + '/api/widgets', addWidget).pipe(catchError(console.log("error")));
+    return this.http.post<Widget>(this.apiBaseUrl + '/api/widgets', addWidget);
   }
 
   deleteWidget(id: string | undefined): Observable<Widget> {
@@ -82,7 +82,5 @@ export class WidgetService {
   //   );
   // }
 }
-function catchError(errorHandler: any): import("rxjs").OperatorFunction<Widget, Widget> {
-  throw new Error('Function not implemented.');
-}
+
 

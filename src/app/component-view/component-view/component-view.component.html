@@ -1,8 +1,14 @@
 <div class="container">
   <br />
   <h1>List of Components</h1>
-  <button (click)="onAdd()">Add comp</button>
-  <br />
+  <button class="btn btn-primary" (click)="onAdd()">Add comp</button><br>
+  <select class="SelectComp" name="ChooseComponent" [(ngModel)]="selectedComponent">
+    <option [ngValue]="null" disabled>Select Component</option>
+    <option [ngValue]="comp" *ngFor="let comp of ComponentWidget">{{comp.name}}</option>
+    <!-- <option value="option-2">Option 2</option> -->
+  </select>
+  <button class="btn btn-primary right" (click)="addCompToWidget()">Add To Widget</button>
+  <br/>
   <table class="table">
     <thead>
       <tr>
